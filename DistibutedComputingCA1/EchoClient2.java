@@ -12,13 +12,13 @@ public class EchoClient2 {
       BufferedReader br = new BufferedReader(is);
 	  
       try {
-         System.out.println("Welcome to the Echo client.\n" +
+         System.out.println("Welcome to the Messaging Service Client.\n" +
             "What is the name of the server host?");
 			
          String hostName = br.readLine();
          if (hostName.length() == 0) // if user did not enter a name
             hostName = "localhost";  //   use the default host name
-         System.out.println("What is the port number of the server host?");
+         System.out.println("What is the port number of the Message server host?");
 		 
          String portNum = br.readLine();
          if (portNum.length() == 0)
@@ -29,17 +29,19 @@ public class EchoClient2 {
          boolean done = false;
          String message, echo, loggingIn;
          while (!done) {
-            System.out.println("Enter a line to receive an echo "
-               + "from the server, or a single period to quit.");
+            System.out.println("Enter a line to receive a response "
+               + "from the Message server, or a single period to quit.");
             message = br.readLine( );
+			
             if ((message.trim()).equals(endMessage)){
                done = true;
-               helper.done( );			   
+               helper.done();			   
             }
             else {
-               //echo = helper.getEcho( message);
+               //echo = helper.getEcho( );
 			   loggingIn = helper.login(message);
-               System.out.println(echo);
+			   System.out.println(loggingIn);
+               //System.out.println(echo);
             }
           } // end while
       } // end try  

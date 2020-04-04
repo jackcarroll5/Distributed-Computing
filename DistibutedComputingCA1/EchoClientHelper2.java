@@ -26,6 +26,9 @@ public class EchoClientHelper2 {
 /**/  System.out.println("Connection request made");
    } // end constructor
 	
+	
+	/*Create Protocol Messages for 4 methods - Code for 4 types of messages based 
+	on this method*/
    /*public String getEcho( String message) throws SocketException,
       IOException{     
       String echo = "";    
