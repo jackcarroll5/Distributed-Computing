@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Vector;
 /**
  * This module is to be used with a concurrent Echo server.
  * Its run method carries out the logic of a client session.
@@ -15,25 +16,31 @@ class EchoServerThread implements Runnable {
    }
    
     // get code number from message
-/*if(code == 100){ Login
+/*if(code == 100){ //Login
 	// take the username from the message an put it in a vector/array (Server)
+	Vector<String> usernameVector = new Vector<>();
+	String username = " "
 	
+	usernameVector.add(username);
 	
 	return "200 OK";
 	// return an OK message to the client e.g. 200 OK
 }
 
-     if(code==101){ Upload
+     if(code==101){ //Upload
 	//take the message and store it in a different vector/array (Server)
+	String message = " ";
+	Vector<String> messageVector = new Vector<>();
 	
+	messageVector.add(message);
 	
 	return "200 OK";
 	//Return 200 OK to client
 	 }
 	 
-if(code == 102){ Download
+if(code == 102){ //Download
 	// get a message from vector (Server) and return it to the client
-	
+	messageVector.get(message);
 	
 	
 	return "200 OK";
@@ -42,10 +49,10 @@ if(code == 102){ Download
 
 if(code == 103){
 	// delete username from first vector (Server)
+	usernameVector.remove(username);
 	
 	
-	
-	return code;
+	return "200 OK";
 	// return 200 OK
 }*/
    

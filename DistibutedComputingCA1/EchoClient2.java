@@ -13,7 +13,7 @@ public class EchoClient2 {
 	  
       try {
          System.out.println("Welcome to the Messaging Service Client.\n" +
-            "What is the name of the server host?");
+            "What is the name of the Messaging Server host?");
 			
          String hostName = br.readLine();
          if (hostName.length() == 0) // if user did not enter a name
