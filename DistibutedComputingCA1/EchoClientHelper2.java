@@ -13,6 +13,9 @@ public class EchoClientHelper2 {
    private MyStreamSocket mySocket;
    private InetAddress serverHost;
    private int serverPort;
+   private String username = "JACK";
+   private String password = "password";
+   
 
    EchoClientHelper2(String hostName,
                      String portNum) throws SocketException,
@@ -38,9 +41,21 @@ public class EchoClientHelper2 {
       return echo;
    } // end getEcho*/
    
+   public String getUsername()
+   {
+	   return this.username;
+   }
+   
+   public String getPassword()
+   {
+	   return this.password;
+   }
+   
    public String login(String message) throws SocketException,
       IOException{     
-      String echo = "";    
+      String echo = "";
+	  
+	  
       mySocket.sendMessage(message);
 	   // now receive the echo
       echo = mySocket.receiveMessage();
@@ -74,9 +89,9 @@ public class EchoClientHelper2 {
       return echo;
    } 
 
-   public void done( ) throws SocketException,
+   public void done() throws SocketException,
                               IOException{
       mySocket.sendMessage(endMessage);
-      mySocket.close( );
+      mySocket.close();
    } // end done 
 } //end class

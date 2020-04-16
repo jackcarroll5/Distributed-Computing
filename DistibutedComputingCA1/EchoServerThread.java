@@ -16,7 +16,7 @@ class EchoServerThread implements Runnable {
    }
    
     // get code number from message
-/*if(code == 100){ //Login
+if(code == 100){ //Login
 	// take the username from the message an put it in a vector/array (Server)
 	Vector<String> usernameVector = new Vector<>();
 	String username = " "
@@ -27,7 +27,7 @@ class EchoServerThread implements Runnable {
 	// return an OK message to the client e.g. 200 OK
 }
 
-     if(code==101){ //Upload
+     if(code == 101){ //Upload
 	//take the message and store it in a different vector/array (Server)
 	String message = " ";
 	Vector<String> messageVector = new Vector<>();
@@ -54,9 +54,8 @@ if(code == 103){
 	
 	return "200 OK";
 	// return 200 OK
-}*/
+}
    
- 
    public void run( ) {
       boolean done = false;
       String message;
