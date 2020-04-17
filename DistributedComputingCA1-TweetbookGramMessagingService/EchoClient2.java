@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * This module contains the presentaton logic of an Echo Client.
@@ -6,10 +7,13 @@ import java.io.*;
  */
 public class EchoClient2 {
    static final String endMessage = ".";
+   static final String logOutSymbol = "#";
+   public static ArrayList<String> messageArray = new ArrayList<String>();
    public static void main(String[] args) {
 	   
       InputStreamReader is = new InputStreamReader(System.in);
       BufferedReader br = new BufferedReader(is);
+
 	  
       try {
          System.out.println("Welcome to the Tweetbookgram Messaging Service Client.\n" +
@@ -23,31 +27,39 @@ public class EchoClient2 {
          String portNum = br.readLine();
 
          if (portNum.length() == 0)
-            portNum = "7";          // default port number
+            portNum = "8";          // default port number
 
          System.out.println("Hostname is: " + hostName + "\nPort number of message server is: " + portNum);
 		
          EchoClientHelper2 helper = 
             new EchoClientHelper2(hostName, portNum);
          boolean done = false;
+
+         String echo;
          String message;
-		 String echo;
 
          helper.login();
 	
          while (!done) {
 
-            System.out.println("\nEnter a line to receive a response "
+            System.out.println("Enter a line to receive a response "
                + "from the Message server, or a single period to quit.");
             message = br.readLine();
 			
             if ((message.trim()).equals(endMessage)){
                done = true;
-               helper.done();			   
+               helper.done();
+            }
+            else if(message.equals(logOutSymbol))
+            {
+               System.out.println("\n");
+               helper.logout();
             }
             else {
-               echo = helper.getEcho(message);
+               echo = helper.upload(message);
                System.out.println("Message echoed back: " + echo);
+               messageArray.add(echo);
+               System.out.println("Messages sent to server: " + messageArray.toString());
             }
           } // end while
       } // end try  

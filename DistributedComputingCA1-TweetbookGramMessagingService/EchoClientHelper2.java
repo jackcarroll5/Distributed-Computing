@@ -1,5 +1,6 @@
 import java.net.*;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * This class is a module which provides the application logic
@@ -56,7 +57,7 @@ public class EchoClientHelper2 {
 
       if(userNameInput.equals(username) && pword.equals(password))
       {
-       System.out.println("Login successful! Welcome to Tweetbookgram");
+       System.out.println("\nLogin successful! Welcome to Tweetbookgram");
        getEcho("Login successful! 100 LOGIN " + userNameInput + " " + pword + " 200 OK");
       }
       else
@@ -70,22 +71,45 @@ public class EchoClientHelper2 {
       return "";
    }
    
-   public String logout(String message) throws SocketException,
-      IOException{     
-      String echo = "";    
-      mySocket.sendMessage(message);
-	   // now receive the echo
-      echo = mySocket.receiveMessage();
-      return echo;
+   public String logout() throws SocketException,
+      IOException{
+
+      String choice;
+      boolean done = false;
+
+      System.out.print("\nAre you sure you want to quit the messaging service?: ");
+      choice = br.readLine();
+
+      if(choice.equals("yes"))
+      {
+         System.out.println("User has logged out of Tweetbookgram! See you again soon!");
+         getEcho("103 LOGOUT 200 OK");
+         done = true;
+         done();
+      }
+      else if(choice.equals("no")){
+         return getEcho("203 LOGOUT User has not logged out!");
+      }
+      return getEcho("103 LOGOUT 200 OK");
    } 
    
    public String upload(String message) throws SocketException,
-      IOException{     
-      String echo = "";    
-      mySocket.sendMessage(message);
-	   // now receive the echo
-      echo = mySocket.receiveMessage();
-      return echo;
+      IOException{
+
+      ArrayList<String> messageArray = new ArrayList<String>();
+
+      if(message.length() > 0)
+      {
+         messageArray.add(message);
+         System.out.println("\nThe message \n" + messageArray.toString() + " \nwritten by the user has been uploaded to the Server.");
+         getEcho("101 UPLOAD " + messageArray.toString() + " 200 OK");
+      }
+      else
+      {
+         System.out.println("Upload failed! The message was null / empty! Please input a non-empty message!");
+         getEcho("202 ERROR Uploading of message was unsuccessful!");
+      }
+      return messageArray.toString();
    } 
    
    public String download(String message) throws SocketException,

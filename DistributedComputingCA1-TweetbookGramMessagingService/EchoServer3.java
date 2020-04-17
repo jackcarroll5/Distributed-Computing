@@ -11,7 +11,7 @@ import java.net.*;
 
 public class EchoServer3 {
    public static void main(String[] args) {
-      int serverPort = 7;    // default port
+      int serverPort = 8;    // default port
 
       if (args.length == 1)
          serverPort = Integer.parseInt(args[0]);   
