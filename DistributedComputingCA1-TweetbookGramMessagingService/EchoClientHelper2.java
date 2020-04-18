@@ -82,13 +82,14 @@ public class EchoClientHelper2 {
 
       if(choice.equals("yes"))
       {
-         System.out.println("User has logged out of Tweetbookgram! See you again soon!");
+         System.out.println("The user chose " + choice + "!\nUser has logged out of Tweetbookgram! See you again soon!");
          getEcho("103 LOGOUT 200 OK");
          done = true;
          done();
       }
       else if(choice.equals("no")){
-         return getEcho("203 LOGOUT User has not logged out!");
+         System.out.println("The user has not logged out!");
+         return getEcho("203 NOLOGOUT");
       }
       return getEcho("103 LOGOUT 200 OK");
    } 
