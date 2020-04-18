@@ -55,11 +55,18 @@ public class EchoClient2 {
                System.out.println("\n");
                helper.logout();
             }
+            else if(message.equals("Download"))
+            {
+               System.out.println("\n");
+               helper.download();
+               System.out.println("Messages have been received received by server: " +  helper.getEcho(messageArray.toString()));
+            }
             else {
                echo = helper.upload(message);
                System.out.println("Message echoed back: " + echo);
                messageArray.add(echo);
-               System.out.println("Messages sent to server: " + messageArray.toString());
+               System.out.println("\n");
+               System.out.println("Messages sent to server: " +  helper.getEcho(messageArray.toString()));
             }
           } // end while
       } // end try  

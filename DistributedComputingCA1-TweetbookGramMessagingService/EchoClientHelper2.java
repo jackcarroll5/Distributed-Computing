@@ -17,6 +17,7 @@ public class EchoClientHelper2 {
    InputStreamReader is = new InputStreamReader(System.in);
    BufferedReader br = new BufferedReader(is);
    public String message;
+   ArrayList<String> messageArray = new ArrayList<String>();
 
    EchoClientHelper2(String hostName,
                      String portNum) throws SocketException,
@@ -97,8 +98,6 @@ public class EchoClientHelper2 {
    public String upload(String message) throws SocketException,
       IOException{
 
-      ArrayList<String> messageArray = new ArrayList<String>();
-
       if(message.length() > 0)
       {
          messageArray.add(message);
@@ -113,13 +112,16 @@ public class EchoClientHelper2 {
       return messageArray.toString();
    } 
    
-   public String download(String message) throws SocketException,
-      IOException{     
-      String echo = "";    
-      mySocket.sendMessage(message);
-	   // now receive the echo
-      echo = mySocket.receiveMessage();
-      return echo;
+   public String download() throws SocketException,
+      IOException{
+
+      System.out.println("Messages retrieved from server:");
+      for(String messages: messageArray)
+      {
+         System.out.println(messages);
+         getEcho(messages);
+      }
+    return getEcho("102 DOWNLOAD");
    } 
 
    public void done() throws SocketException,
