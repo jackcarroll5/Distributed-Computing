@@ -64,6 +64,7 @@ public class EchoClientHelper2 {
          System.out.println("Login was unsuccessful. No username or password was entered.");
          System.out.println("\nMessaging system shut down due to invalid username / password \nPlease try again and restart this client application!");
          System.out.println("201 ERROR! Login to Tweetbookgram failed.");
+         getEcho("201 ERROR! Login to Tweetbookgram failed.");
          System.exit(0);
          return "201 ERROR! Login to Tweetbookgram failed.";
       }

@@ -2,19 +2,18 @@
 
 title __DISTRIBUTEDCOMPUTINGCA1-TWEETBOOKGRAMMESSAGINGSERVICE's Class Diagram__\n
 
-  namespace  {
+
     class EchoClient2 {
         {static} + messageArray : ArrayList<String>
         {static} ~ endMessage : String
         {static} ~ logOutSymbol : String
         {static} + main()
     }
-  }
+
   
 
-  namespace  {
+
     class EchoClientHelper2 {
-        + message : String
         ~ br : BufferedReader
         {static} ~ endMessage : String
         ~ is : InputStreamReader
@@ -29,26 +28,26 @@ title __DISTRIBUTEDCOMPUTINGCA1-TWEETBOOKGRAMMESSAGINGSERVICE's Class Diagram__\
         + upload()
         ~ EchoClientHelper2()
     }
-  }
+
   
 
-  namespace  {
+
     class EchoServer3 {
         {static} + main()
     }
-  }
+
   
 
-  namespace  {
+
     class EchoServerThread {
         {static} ~ endMessage : String
         + run()
         ~ EchoServerThread()
     }
-  }
+
   
 
-  namespace  {
+
     class MyStreamSocket {
         - input : BufferedReader
         - output : PrintWriter
@@ -60,7 +59,7 @@ title __DISTRIBUTEDCOMPUTINGCA1-TWEETBOOKGRAMMESSAGINGSERVICE's Class Diagram__\
         ~ MyStreamSocket()
         - setStreams()
     }
-  }
+
   
 
   EchoClientHelper2 o-- MyStreamSocket : mySocket
