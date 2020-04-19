@@ -8,13 +8,12 @@ import java.util.ArrayList;
 public class EchoClient2 {
    static final String endMessage = ".";
    static final String logOutSymbol = "#";
-   public static ArrayList<String> messageArray = new ArrayList<String>();
+   public static ArrayList<String> messageArray = new ArrayList<>();
    public static void main(String[] args) {
 	   
       InputStreamReader is = new InputStreamReader(System.in);
       BufferedReader br = new BufferedReader(is);
 
-	  
       try {
          System.out.println("Welcome to the Tweetbookgram Messaging Service Client.\n" +
             "What is the name of the Messaging Server host?");
@@ -36,13 +35,15 @@ public class EchoClient2 {
          boolean done = false;
 
          String echo;
+         String echoDownload;
          String message;
 
-         helper.login();
+         String responseLogin = helper.login();
+         System.out.println("Echoed response: " + helper.getEcho(responseLogin));
 	
          while (!done) {
 
-            System.out.println("Enter a line to receive a response "
+            System.out.println("\nEnter a line to receive a response "
                + "from the Message server, or a single period to quit.");
             message = br.readLine();
 			
@@ -53,20 +54,18 @@ public class EchoClient2 {
             else if(message.equals(logOutSymbol))
             {
                System.out.println("\n");
-               helper.logout();
+               String echoLogout = helper.logout();
+               System.out.println("Echoed response: " + helper.getEcho(echoLogout));
             }
             else if(message.equals("Download"))
             {
-               System.out.println("\n");
-               helper.download();
-               System.out.println("Messages have been received received by server: " +  helper.getEcho(messageArray.toString()));
+              echoDownload = helper.download(); //String value
+              System.out.println("Echoed response: " + helper.getEcho(echoDownload));
             }
             else {
-               echo = helper.upload(message);
-               System.out.println("Message echoed back: " + echo);
+               echo = helper.upload(message); //String value
+               System.out.println("Echoed response: " + helper.getEcho(echo));
                messageArray.add(echo);
-               System.out.println("\n");
-               System.out.println("Messages sent to server: " +  helper.getEcho(messageArray.toString()));
             }
           } // end while
       } // end try  
